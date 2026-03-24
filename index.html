@@ -3,341 +3,451 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تدريبات كاد وأخواتها - العربية السهلة</title>
+    <title>تدريبات كاد وأخواتها | العربية السهلة</title>
     
-    <!-- استدعاء خط نوتو نسخ العربي من جوجل -->
+    <!-- استدعاء الخطوط من جوجل -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- مكتبة Tailwind CSS لتسريع التصميم المتجاوب -->
+    <!-- مكتبة Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
-        body {
+        /* إعدادات الخطوط الأساسية */
+        .font-readex {
+            font-family: 'Readex Pro', sans-serif;
+        }
+        .font-naskh {
             font-family: 'Noto Naskh Arabic', serif;
-            background-color: #ffffff;
-            color: #1f2937;
         }
         
-        .btn-option {
-            transition: all 0.3s ease;
+        /* ألوان مخصصة وخلفيات */
+        body {
+            background-color: #f8fafc; /* لون رمادي/أزرق فاتح جداً هادئ */
+            color: #0f172a; /* لون غامق لضمان وضوح القراءة */
         }
-        
-        .btn-option:hover {
+
+        /* تنسيقات الأزرار التفاعلية */
+        .option-btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .option-btn:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
-
-        .correct-answer {
-            background-color: #10b981 !important; /* أخضر */
-            color: white !important;
+        
+        /* حالات الإجابات */
+        .correct-btn {
+            background-color: #d1fae5 !important; /* أخضر باستيل */
             border-color: #10b981 !important;
+            color: #065f46 !important;
         }
-
-        .wrong-answer {
-            background-color: #ef4444 !important; /* أحمر */
-            color: white !important;
+        .wrong-btn {
+            background-color: #fee2e2 !important; /* أحمر باستيل */
             border-color: #ef4444 !important;
+            color: #991b1b !important;
+        }
+        .disabled-btn {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
-        .disabled {
-            pointer-events: none;
-            opacity: 0.7;
+        /* حركات التوضيح */
+        .feedback-enter {
+            animation: slideDown 0.4s ease-out forwards;
         }
 
-        #feedback-box {
-            transition: opacity 0.3s ease;
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* تنسيق التبويب النشط */
+        .tab-active {
+            border-bottom-width: 4px;
+            border-color: #2563eb;
+            color: #1d4ed8;
+            background-color: #eff6ff;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center p-4 sm:p-8">
+<body class="min-h-screen flex flex-col font-naskh text-lg">
 
     <!-- شريط العنوان والهوية -->
-    <header class="w-full max-w-4xl flex flex-col sm:flex-row justify-between items-center pb-4 border-b-2 border-gray-100 mb-8 gap-4">
-        <div class="text-center sm:text-right">
-            <h1 class="text-2xl font-bold text-blue-700">إعداد/ محمود صلاح</h1>
-        </div>
-        
-        <a href="https://www.youtube.com/egysalah" target="_blank" class="flex items-center gap-2 bg-red-50 hover:bg-red-100 px-4 py-2 rounded-full transition duration-300 group">
-            <span class="text-red-600 font-bold text-lg group-hover:text-red-700">العربية السهلة</span>
-            <!-- أيقونة يوتيوب SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#ff0000" class="group-hover:scale-110 transition-transform">
-                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-            </svg>
-        </a>
-    </header>
-
-    <!-- الحاوية الرئيسية للتطبيق -->
-    <main class="w-full max-w-3xl bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden relative">
-        
-        <!-- شاشة البداية -->
-        <div id="start-screen" class="p-8 text-center flex flex-col items-center">
-            <!-- أيقونة تعبيرية SVG -->
-            <svg class="w-32 h-32 mb-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-            </svg>
-            <h2 class="text-4xl font-bold text-gray-800 mb-4">تدريبات: كاد وأخواتها</h2>
-            <p class="text-xl text-gray-600 mb-8 leading-relaxed">
-                أهلاً بك في هذا التدريب التفاعلي. سنختبر معلوماتك حول أفعال المقاربة والرجاء والشروع، وحكم اقتران خبرها بـ (أن)، والتمييز بين الأفعال الناقصة والتامة.
-            </p>
-            <button onclick="startQuiz()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-2xl py-4 px-12 rounded-xl shadow-lg transition transform hover:scale-105">
-                ابدأ التدريب الآن
-            </button>
-        </div>
-
-        <!-- شاشة التدريب -->
-        <div id="quiz-screen" class="hidden flex flex-col min-h-[500px]">
-            <!-- شريط التقدم -->
-            <div class="bg-gray-100 h-2 w-full">
-                <div id="progress-bar" class="bg-blue-600 h-2 transition-all duration-500" style="width: 0%"></div>
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="text-center sm:text-right font-readex">
+                <h1 class="text-3xl font-bold text-slate-800">العربية السهلة</h1>
+                <p class="text-xl text-slate-600 font-medium mt-1">محمود صلاح</p>
             </div>
             
-            <div class="p-6 sm:p-10 flex-grow flex flex-col justify-between">
-                <div>
-                    <div class="flex justify-between items-center mb-6">
-                        <span class="text-gray-500 text-lg font-semibold" id="question-counter">السؤال 1 من 10</span>
-                        <span class="bg-blue-100 text-blue-800 text-sm font-bold px-3 py-1 rounded-full" id="score-display">النقاط: 0</span>
-                    </div>
-                    
-                    <h3 id="question-text" class="text-2xl sm:text-3xl font-bold text-gray-800 mb-8 leading-normal text-center"></h3>
-                    
-                    <div id="options-container" class="flex flex-col gap-4">
-                        <!-- الأزرار ستضاف هنا عبر الجافاسكربت -->
-                    </div>
-                </div>
+            <a href="https://www.youtube.com/egysalah" target="_blank" class="flex items-center gap-2 bg-red-50 hover:bg-red-100 border border-red-100 px-5 py-2.5 rounded-full transition duration-300 group shadow-sm">
+                <span class="text-red-700 font-readex font-bold text-lg group-hover:text-red-800">قناتنا على يوتيوب</span>
+                <!-- أيقونة يوتيوب SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#dc2626" class="group-hover:scale-110 transition-transform">
+                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                </svg>
+            </a>
+        </div>
 
-                <!-- صندوق التغذية الراجعة (إجابة صحيحة / إجابة خاطئة) -->
-                <div id="feedback-box" class="mt-8 p-4 rounded-xl text-center text-xl font-bold opacity-0 hidden">
-                </div>
+        <!-- شريط التنقل (Tabs) -->
+        <nav class="max-w-5xl mx-auto px-4 mt-2 font-readex flex overflow-x-auto no-scrollbar border-b border-slate-200">
+            <button onclick="switchTab('home')" id="tab-home" class="tab-btn px-6 py-3 font-bold text-slate-600 hover:bg-slate-50 transition-colors whitespace-nowrap tab-active">
+                الرئيسية
+            </button>
+            <button onclick="switchTab('section1')" id="tab-section1" class="tab-btn px-6 py-3 font-bold text-slate-600 hover:bg-slate-50 transition-colors whitespace-nowrap">
+                1. الأساسيات
+            </button>
+            <button onclick="switchTab('section2')" id="tab-section2" class="tab-btn px-6 py-3 font-bold text-slate-600 hover:bg-slate-50 transition-colors whitespace-nowrap">
+                2. الاقتران بـ (أن)
+            </button>
+            <button onclick="switchTab('section3')" id="tab-section3" class="tab-btn px-6 py-3 font-bold text-slate-600 hover:bg-slate-50 transition-colors whitespace-nowrap">
+                3. التام والناقص
+            </button>
+        </nav>
+    </header>
 
-                <div class="mt-6 flex justify-end">
-                    <button id="next-btn" onclick="nextQuestion()" class="hidden bg-gray-800 hover:bg-gray-900 text-white font-bold text-xl py-3 px-8 rounded-xl transition">
-                        السؤال التالي ←
-                    </button>
+    <!-- المحتوى الرئيسي -->
+    <main class="flex-grow w-full max-w-5xl mx-auto p-4 sm:p-6 mb-12">
+        
+        <!-- صفحة الرئيسية -->
+        <div id="home" class="tab-content block bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center mt-6">
+            <div class="flex justify-center mb-6">
+                <!-- أيقونة ترحيبية SVG -->
+                <svg class="w-24 h-24 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+            </div>
+            <h2 class="text-4xl font-readex font-bold text-slate-800 mb-6">مرحباً بك في تدريبات كاد وأخواتها</h2>
+            <p class="text-2xl text-slate-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+                هذا التطبيق مقسم إلى ثلاثة أقسام رئيسية لضمان فهمك الشامل للدرس. يمكنك التنقل بين الأقسام بحرية من خلال الشريط العلوي.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-right mt-8">
+                <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                    <h3 class="font-readex font-bold text-xl text-blue-800 mb-2">1. الأساسيات</h3>
+                    <p class="text-blue-900">عمل الأفعال، التمييز بين المقاربة والرجاء والشروع.</p>
+                </div>
+                <div class="bg-green-50 p-6 rounded-xl border border-green-100">
+                    <h3 class="font-readex font-bold text-xl text-green-800 mb-2">2. الاقتران بـ (أن)</h3>
+                    <p class="text-green-900">متى يجب، يكثر، يقل، أو يمتنع اقتران الخبر بأن.</p>
+                </div>
+                <div class="bg-purple-50 p-6 rounded-xl border border-purple-100">
+                    <h3 class="font-readex font-bold text-xl text-purple-800 mb-2">3. التام والناقص</h3>
+                    <p class="text-purple-900">أسئلة للمتميزين للتفريق بين الفعل الناسخ والفعل التام.</p>
                 </div>
             </div>
-        </div>
-
-        <!-- شاشة النتيجة النهائية -->
-        <div id="result-screen" class="hidden p-8 sm:p-12 text-center flex flex-col items-center">
-            <div id="result-icon" class="mb-6"></div>
-            <h2 class="text-4xl font-bold text-gray-800 mb-4">انتهى التدريب!</h2>
-            <p class="text-2xl text-gray-600 mb-6">لقد حصلت على:</p>
-            <div class="text-6xl font-bold text-blue-600 mb-8" id="final-score">10 / 10</div>
-            <p id="result-message" class="text-2xl font-bold mb-8"></p>
-            <button onclick="resetQuiz()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold text-2xl py-4 px-12 rounded-xl shadow-lg transition transform hover:scale-105">
-                إعادة التدريب
+            <button onclick="switchTab('section1')" class="mt-10 bg-blue-600 hover:bg-blue-700 text-white font-readex font-bold text-2xl py-4 px-10 rounded-xl shadow-md transition transform hover:-translate-y-1">
+                البدء بالقسم الأول
             </button>
         </div>
+
+        <!-- حاويات الأقسام (سيتم ملؤها بواسطة جافاسكربت) -->
+        <div id="section1" class="tab-content hidden mt-6 space-y-8"></div>
+        <div id="section2" class="tab-content hidden mt-6 space-y-8"></div>
+        <div id="section3" class="tab-content hidden mt-6 space-y-8"></div>
 
     </main>
 
     <script>
-        // بنك الأسئلة
-        const questions = [
-            {
-                question: "الفعل (عَسَى) يُعد من أفعال:",
-                options: ["المقاربة", "الرجاء", "الشروع"],
-                correct: 1
+        // بنوك الأسئلة المقسمة
+        const quizData = {
+            section1: {
+                id: 'section1',
+                title: 'القسم الأول: أساسيات كاد وأخواتها (المعنى والعمل)',
+                questions: [
+                    {
+                        q: "من شروط عمل (كاد وأخواتها) عمل (كان) أن يكون خبرها:",
+                        options: ["مفردًا منصوبًا", "شبه جملة (ظرفًا أو جارًا ومجرورًا)", "جملة فعلية فعلها مضارع"],
+                        correct: 2,
+                        explanation: "أفعال المقاربة والرجاء والشروع تعمل عمل كان (ترفع المبتدأ وتنصب الخبر) بشرط أساسي، وهو أن يكون خبرها جملة فعلية، وفعلها يكون مضارعًا دائمًا."
+                    },
+                    {
+                        q: "الأفعال (شرع، بدأ، أخذ، طفق، جعل) تُسمى أفعال:",
+                        options: ["المقاربة", "الرجاء", "الشروع"],
+                        correct: 2,
+                        explanation: "تسمى أفعال الشروع؛ لأنها تدل على البدء والشروع في تنفيذ الفعل (الخبر)."
+                    },
+                    {
+                        q: "«كادَ العربُ ينتصرون». الموقع الإعرابي لجملة (ينتصرون):",
+                        options: ["في محل رفع خبر كاد", "في محل نصب خبر كاد", "في محل نصب حال"],
+                        correct: 1,
+                        explanation: "كاد فعل ماضٍ ناقص، و(العربُ) اسم كاد مرفوع، والجملة الفعلية (ينتصرون) في محل نصب خبر كاد."
+                    },
+                    {
+                        q: "الفعل الذي يفيد (الرجاء) من بين الأفعال الآتية هو:",
+                        options: ["عَسَى", "أوشك", "جعل"],
+                        correct: 0,
+                        explanation: "أفعال الرجاء هي: عسى، حرى، اخلولق. أما أوشك فيفيد المقاربة، وجعل يفيد الشروع."
+                    },
+                    {
+                        q: "جميع أفعال المقاربة والرجاء والشروع أفعال جامدة (تأتي في صيغة الماضي فقط) ما عدا:",
+                        options: ["كاد وأوشك", "عسى وحرى", "شرع وبدأ"],
+                        correct: 0,
+                        explanation: "كاد وأوشك أفعال متصرفة تصرفًا ناقصًا، أي يأتي منها الماضي والمضارع (يكاد - يوشك) ويعملان نفس العمل. أما باقي الأفعال فتلزم صيغة الماضي لتكون ناقصة."
+                    }
+                ]
             },
-            {
-                question: "لكي تكون (كاد وأخواتها) أفعالًا ناقصة، لابد أن يكون خبرها:",
-                options: ["مفردًا منصوبًا", "شبه جملة", "جملة فعلية فعلها مضارع"],
-                correct: 2
+            section2: {
+                id: 'section2',
+                title: 'القسم الثاني: حكم اقتران خبر الأفعال بـ (أنْ)',
+                questions: [
+                    {
+                        q: "حكم اقتران خبر أفعال الشروع بـ (أنْ):",
+                        options: ["يجوز", "يجب", "يمتنع (لا يقترن)"],
+                        correct: 2,
+                        explanation: "أفعال الشروع تدل على البدء في الفعل الآن، و(أنْ) تدل على الاستقبال، فلا يجتمعان، ولذلك يمتنع اقتران خبرها بـ أنْ."
+                    },
+                    {
+                        q: "«عسى اللهُ أنْ يأتيَ بالنصر». حكم اقتران خبر (عسى) بـ (أنْ):",
+                        options: ["يقل", "يكثر", "يجب"],
+                        correct: 1,
+                        explanation: "الفعلان (عسى) و (أوشك) يكثر اقتران خبرهما بـ أنْ، ويجوز تجردهما منها لكن بقِلَّة."
+                    },
+                    {
+                        q: "«شرعَ المهندسون ..........». التكملة الصحيحة نحويًا هي:",
+                        options: ["أن يبنوا", "يبنون", "يبنوا"],
+                        correct: 1,
+                        explanation: "الفعل (شرع) من أفعال الشروع، ويمتنع اقتران خبره بـ أنْ. لذلك نأتي بالفعل المضارع مرفوعًا بثبوت النون (يبنون)."
+                    },
+                    {
+                        q: "«يكاد زيتها يضيء». حكم اقتران خبر (كاد) بـ أنْ في هذه الآية:",
+                        options: ["يقل", "يمتنع", "يجب"],
+                        correct: 0,
+                        explanation: "الفعلان (كاد) و (كرب) يقل اقتران خبرهما بـ أنْ، والكثير أن يتجرد الخبر منها كما في هذه الآية الكريمة."
+                    },
+                    {
+                        q: "أفعال المقاربة والرجاء يمكن أن يقترن خبرها بـ (أنْ).",
+                        options: ["صواب", "خطأ"],
+                        correct: 0,
+                        explanation: "نعم، أفعال المقاربة (كاد، كرب، أوشك) وأفعال الرجاء (عسى، حرى، اخلولق) يجوز اقتران خبرها بـ أنْ باختلاف الدرجات (يقل، يكثر، يجب)، عكس أفعال الشروع التي يمتنع اقترانها دائمًا."
+                    }
+                ]
             },
-            {
-                question: "«كاد العربُ ينتصرون». الموقع الإعرابي لجملة (ينتصرون):",
-                options: ["في محل رفع خبر كاد", "في محل نصب خبر كاد", "في محل جزم"],
-                correct: 1
-            },
-            {
-                question: "من أفعال الشروع التي تدل على البدء في الخبر:",
-                options: ["أوشك، كرب", "حرى، اخلولق", "شرع، طفق، أخذ"],
-                correct: 2
-            },
-            {
-                question: "حكم اقتران خبر أفعال الشروع (مثل: بدأ، شرع) بـ (أنْ):",
-                options: ["ممنوع (لا يقترن)", "يجوز", "يجب"],
-                correct: 0
-            },
-            {
-                question: "«أخذ الطالبُ يذاكر درسَه». إعراب كلمة (الطالبُ):",
-                options: ["فاعل مرفوع", "اسم أخذ مرفوع", "مبتدأ مرفوع"],
-                correct: 1
-            },
-            {
-                question: "«أخذ الطالبُ الكتابَ من المعلم». إعراب كلمة (الطالبُ):",
-                options: ["فاعل مرفوع", "اسم أخذ مرفوع", "مفعول به"],
-                correct: 0
-            },
-            {
-                question: "أفعال الشروع لا يقترن خبرها بـ (أن).",
-                options: ["صواب", "خطأ"],
-                correct: 0
-            },
-            {
-                question: "الجملة الصحيحة نحويًا هي:",
-                options: ["شرع المهندسون أن يبنوا", "شرع المهندسون يبنون", "شرع المهندسين يبنون"],
-                correct: 1
-            },
-            {
-                question: "«أوشك السلامُ ...» التكملة الصحيحة (ويكثر اقترانها بـ أن):",
-                options: ["يعمُّ", "أن يعمَّ", "أن يعمُّ"],
-                correct: 1
-            },
-            {
-                question: "الأفعال التي يأتي منها المضارع من (كاد وأخواتها) هي:",
-                options: ["كاد وأوشك فقط", "عسى وحرى فقط", "جميع أفعال الشروع"],
-                correct: 0
-            },
-            {
-                question: "«عسى اللهُ أن يأتي بالنصر». حكم اقتران خبر (عسى) بـ (أنْ):",
-                options: ["يجب", "يكثر", "يقل", "يمتنع (لا يقترن)"],
-                correct: 1
-            },
-            {
-                question: "الجملة التي تشتمل على فعل (تام) هي:",
-                options: ["أنشأ المهندسون يبنون", "بدأ الطالبُ يقرأ", "أنشأ المهندسون المبنى"],
-                correct: 2
-            },
-            {
-                question: "«يكاد اللاعبون يفوزون». الفعل (يكاد) هنا:",
-                options: ["فعل مضارع تام", "فعل مضارع ناقص", "فعل ماضٍ ناقص"],
-                correct: 1
-            },
-            {
-                question: "أي الجمل التالية صحيحة نحويًا؟",
-                options: ["عسى الكربُ ينفرجُ", "عسى الكربُ أن ينفرجَ", "كلاهما صواب"],
-                correct: 2
+            section3: {
+                id: 'section3',
+                title: 'القسم الثالث: التمييز بين الفعل التام والفعل الناقص',
+                questions: [
+                    {
+                        q: "«أخذَ الطالبُ يذاكر درسَه». إعراب كلمة (الطالبُ):",
+                        options: ["فاعل مرفوع", "اسم أخذ مرفوع", "مبتدأ مرفوع"],
+                        correct: 1,
+                        explanation: "هنا الفعل (أخذ) ناقص؛ لأنه بمعنى (بدأ)، وخبره جملة فعلية فعلها مضارع (يذاكر). ولذلك (الطالب) اسم أخذ مرفوع."
+                    },
+                    {
+                        q: "«أخذَ الطالبُ الكتابَ من المعلم». إعراب كلمة (الطالبُ):",
+                        options: ["اسم أخذ مرفوع", "مبتدأ مرفوع", "فاعل مرفوع"],
+                        correct: 2,
+                        explanation: "هنا الفعل (أخذ) تام (بمعنى تناول)؛ لأنه لم يأتِ بعده خبر جملة فعلية مضارعية. ولذلك (الطالب) فاعل مرفوع، و(الكتاب) مفعول به منصوب."
+                    },
+                    {
+                        q: "الجملة التي تشتمل على فعل (تام) هي:",
+                        options: ["أنشأ المهندسون يبنون المبنى", "بدأ المعلمُ يشرح الدرس", "أنشأ المهندسون المبنى العظيم"],
+                        correct: 2,
+                        explanation: "في الجملة الأخيرة «أنشأ المهندسون المبنى»، لا يوجد خبر جملة فعلية مضارعية، والفعل هنا بمعنى (بنى أو شيد)، ولذلك هو فعل تام والمهندسون (فاعل)."
+                    },
+                    {
+                        q: "«جعلَ الخياطُ القماشَ ثوبًا». الفعل (جعل) في هذه الجملة:",
+                        options: ["فعل ناقص يفيد الشروع", "فعل تام ينصب مفعولين", "فعل ناقص يفيد الرجاء"],
+                        correct: 1,
+                        explanation: "الفعل (جعل) هنا بمعنى (حوَّل)، وليس بمعنى (بدأ)، ولا يوجد خبر مضارع، لذلك هو فعل تام ينصب مفعولين (القماش مفعول به أول، ثوبًا مفعول به ثانٍ)."
+                    },
+                    {
+                        q: "«نحنُ مجتهدون». عند إدخال الفعل (طفق) على الجملة، تصبح الصياغة الصحيحة:",
+                        options: ["طفقنا نجتهد", "طفقنا مجتهدين", "طفقنا أن نجتهد"],
+                        correct: 0,
+                        explanation: "الضمير (نحن) يتحول إلى (نا) الفاعلين ليكون اسم طفق. والخبر (مجتهدون) يجب تحويله إلى فعل مضارع (نجتهد). وطفق من أفعال الشروع يمتنع اقتران خبرها بـ (أن). فالصياغة (طفقنا نجتهد)."
+                    }
+                ]
             }
-        ];
+        };
 
-        let currentQuestionIndex = 0;
-        let score = 0;
+        // تتبع حالة المستخدم
+        const userState = {
+            section1: { answered: 0, score: 0 },
+            section2: { answered: 0, score: 0 },
+            section3: { answered: 0, score: 0 }
+        };
 
-        // عناصر واجهة المستخدم
-        const startScreen = document.getElementById('start-screen');
-        const quizScreen = document.getElementById('quiz-screen');
-        const resultScreen = document.getElementById('result-screen');
-        const questionText = document.getElementById('question-text');
-        const optionsContainer = document.getElementById('options-container');
-        const questionCounter = document.getElementById('question-counter');
-        const scoreDisplay = document.getElementById('score-display');
-        const progressBar = document.getElementById('progress-bar');
-        const feedbackBox = document.getElementById('feedback-box');
-        const nextBtn = document.getElementById('next-btn');
+        // دالة تبديل الأقسام
+        function switchTab(tabId) {
+            // إخفاء جميع المحتويات
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            // إزالة التنسيق النشط من كل الأزرار
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('tab-active');
+            });
 
-        function startQuiz() {
-            startScreen.classList.add('hidden');
-            quizScreen.classList.remove('hidden');
-            loadQuestion();
+            // إظهار المحتوى المطلوب وتنشيط الزر
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById(`tab-${tabId}`).classList.add('tab-active');
         }
 
-        function loadQuestion() {
-            // إعادة ضبط الحالة
-            nextBtn.classList.add('hidden');
-            feedbackBox.classList.add('hidden');
-            feedbackBox.style.opacity = '0';
-            feedbackBox.className = 'mt-8 p-4 rounded-xl text-center text-xl font-bold'; // إعادة الفئات الأساسية
-            optionsContainer.innerHTML = '';
-            
-            const currentQ = questions[currentQuestionIndex];
-            
-            // تحديث النصوص
-            questionText.textContent = currentQ.question;
-            questionCounter.textContent = `السؤال ${currentQuestionIndex + 1} من ${questions.length}`;
-            scoreDisplay.textContent = `النقاط: ${score}`;
-            
-            // تحديث شريط التقدم
-            const progress = ((currentQuestionIndex) / questions.length) * 100;
-            progressBar.style.width = `${progress}%`;
+        // دالة إنشاء واجهة الأسئلة لكل قسم
+        function buildSections() {
+            Object.keys(quizData).forEach(sectionKey => {
+                const section = quizData[sectionKey];
+                const container = document.getElementById(section.id);
+                
+                // إضافة عنوان القسم
+                let html = `
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 mb-8 text-center">
+                        <h2 class="text-3xl font-readex font-bold text-slate-800">${section.title}</h2>
+                        <div class="mt-4 flex justify-center items-center gap-4 text-slate-600 font-bold">
+                            <span class="bg-slate-100 px-4 py-2 rounded-lg" id="${section.id}-counter">الأسئلة المجابة: 0 / ${section.questions.length}</span>
+                            <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-lg" id="${section.id}-score">النقاط: 0</span>
+                        </div>
+                    </div>
+                `;
 
-            // إنشاء الخيارات
-            currentQ.options.forEach((option, index) => {
-                const button = document.createElement('button');
-                button.textContent = option;
-                button.className = 'btn-option w-full text-right sm:text-center bg-gray-50 border-2 border-gray-200 text-gray-800 text-xl font-semibold py-4 px-6 rounded-xl hover:bg-blue-50 hover:border-blue-300';
-                button.onclick = () => checkAnswer(index, button);
-                optionsContainer.appendChild(button);
+                // إضافة الأسئلة
+                section.questions.forEach((q, qIndex) => {
+                    html += `
+                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8" id="q-container-${sectionKey}-${qIndex}">
+                            <div class="flex items-start gap-4 mb-6">
+                                <div class="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl flex-shrink-0 mt-1 font-readex">
+                                    ${qIndex + 1}
+                                </div>
+                                <h3 class="text-2xl font-bold text-slate-800 leading-relaxed">${q.q}</h3>
+                            </div>
+                            
+                            <div class="flex flex-col gap-4 pl-0 sm:pl-14 options-wrapper">
+                                ${q.options.map((opt, optIndex) => `
+                                    <button 
+                                        onclick="handleAnswer('${sectionKey}', ${qIndex}, ${optIndex}, this)" 
+                                        class="option-btn w-full text-right bg-slate-50 border-2 border-slate-200 text-slate-700 text-xl font-medium py-4 px-6 rounded-xl hover:bg-slate-100">
+                                        ${opt}
+                                    </button>
+                                `).join('')}
+                            </div>
+
+                            <!-- صندوق التغذية الراجعة المخفي مبدئياً -->
+                            <div id="feedback-${sectionKey}-${qIndex}" class="hidden mt-6 pl-0 sm:pl-14">
+                                <!-- سيتم حقن المحتوى هنا -->
+                            </div>
+                        </div>
+                    `;
+                });
+
+                container.innerHTML = html;
             });
         }
 
-        function checkAnswer(selectedIndex, selectedButton) {
-            const currentQ = questions[currentQuestionIndex];
-            const allButtons = optionsContainer.querySelectorAll('button');
+        // دالة التعامل مع الإجابة
+        function handleAnswer(sectionKey, qIndex, selectedOptIndex, btnElement) {
+            const section = quizData[sectionKey];
+            const question = section.questions[qIndex];
+            const container = document.getElementById(`q-container-${sectionKey}-${qIndex}`);
+            const buttons = container.querySelectorAll('.option-btn');
+            const feedbackBox = document.getElementById(`feedback-${sectionKey}-${qIndex}`);
             
-            // تعطيل جميع الأزرار بعد الاختيار
-            allButtons.forEach(btn => btn.classList.add('disabled'));
+            // تعطيل جميع الأزرار لتجنب الإجابة المتكررة
+            buttons.forEach(btn => btn.classList.add('disabled-btn'));
+            buttons.forEach(btn => btn.disabled = true);
 
+            const isCorrect = (selectedOptIndex === question.correct);
+            
+            // تحديث حالة المستخدم
+            userState[sectionKey].answered++;
+            if(isCorrect) userState[sectionKey].score++;
+
+            // تحديث العدادات العلوية للقسم
+            document.getElementById(`${sectionKey}-counter`).textContent = `الأسئلة المجابة: ${userState[sectionKey].answered} / ${section.questions.length}`;
+            document.getElementById(`${sectionKey}-score`).textContent = `النقاط: ${userState[sectionKey].score}`;
+
+            // تلوين الأزرار
+            if (isCorrect) {
+                btnElement.classList.add('correct-btn');
+                btnElement.classList.remove('bg-slate-50', 'border-slate-200');
+            } else {
+                btnElement.classList.add('wrong-btn');
+                btnElement.classList.remove('bg-slate-50', 'border-slate-200');
+                // إظهار الإجابة الصحيحة
+                buttons[question.correct].classList.add('correct-btn');
+                buttons[question.correct].classList.remove('bg-slate-50', 'border-slate-200');
+            }
+
+            // إعداد صندوق التغذية الراجعة
+            let feedbackHTML = '';
+            if (isCorrect) {
+                feedbackHTML = `
+                    <div class="bg-emerald-50 border-r-4 border-emerald-500 p-5 rounded-l-xl feedback-enter">
+                        <div class="flex items-center gap-2 mb-3 text-emerald-700">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span class="text-2xl font-bold font-readex">إجابة صحيحة</span>
+                        </div>
+                        <p class="text-lg text-emerald-900 leading-relaxed font-medium">
+                            <span class="font-bold">التوضيح: </span>${question.explanation}
+                        </p>
+                    </div>
+                `;
+            } else {
+                feedbackHTML = `
+                    <div class="bg-red-50 border-r-4 border-red-500 p-5 rounded-l-xl feedback-enter">
+                        <div class="flex items-center gap-2 mb-3 text-red-700">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span class="text-2xl font-bold font-readex">إجابة خاطئة</span>
+                        </div>
+                        <p class="text-lg text-red-900 leading-relaxed font-medium">
+                            <span class="font-bold">التوضيح الصحيح: </span>${question.explanation}
+                        </p>
+                    </div>
+                `;
+            }
+
+            feedbackBox.innerHTML = feedbackHTML;
             feedbackBox.classList.remove('hidden');
-            
-            if (selectedIndex === currentQ.correct) {
-                // إجابة صحيحة
-                selectedButton.classList.add('correct-answer');
-                score++;
-                scoreDisplay.textContent = `النقاط: ${score}`;
-                
-                feedbackBox.textContent = "إجابة صحيحة";
-                feedbackBox.classList.add('bg-green-100', 'text-green-800');
-            } else {
-                // إجابة خاطئة
-                selectedButton.classList.add('wrong-answer');
-                // تظليل الإجابة الصحيحة
-                allButtons[currentQ.correct].classList.add('correct-answer');
-                
-                feedbackBox.textContent = "إجابة خاطئة";
-                feedbackBox.classList.add('bg-red-100', 'text-red-800');
-            }
 
-            // إظهار التغذية الراجعة وزر التالي بتأثير حركي
-            setTimeout(() => {
-                feedbackBox.style.opacity = '1';
-                nextBtn.classList.remove('hidden');
-            }, 100);
-        }
-
-        function nextQuestion() {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) {
-                loadQuestion();
-            } else {
-                showResult();
+            // التحقق من اكتمال القسم
+            if (userState[sectionKey].answered === section.questions.length) {
+                showSectionCompletion(sectionKey);
             }
         }
 
-        function showResult() {
-            quizScreen.classList.add('hidden');
-            resultScreen.classList.remove('hidden');
+        // إظهار رسالة اكتمال القسم في أسفله
+        function showSectionCompletion(sectionKey) {
+            const container = document.getElementById(sectionKey);
+            const score = userState[sectionKey].score;
+            const total = quizData[sectionKey].questions.length;
+            const percentage = (score / total) * 100;
             
-            document.getElementById('final-score').textContent = `${score} / ${questions.length}`;
+            let message = "";
+            let colorClass = "";
             
-            const resultMessage = document.getElementById('result-message');
-            const resultIcon = document.getElementById('result-icon');
-            
-            const percentage = (score / questions.length) * 100;
-            
-            if (percentage >= 90) {
-                resultMessage.textContent = "ممتاز! أنت متفوق في قواعد اللغة العربية.";
-                resultMessage.className = "text-2xl font-bold mb-8 text-green-600";
-                resultIcon.innerHTML = `<svg class="w-32 h-32 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>`;
+            if (percentage >= 80) {
+                message = "مستوى ممتاز! لقد أتقنت هذا القسم.";
+                colorClass = "bg-green-100 text-green-800 border-green-200";
             } else if (percentage >= 60) {
-                resultMessage.textContent = "جيد جدًا! يمكنك مراجعة الدرس لتحقيق العلامة الكاملة.";
-                resultMessage.className = "text-2xl font-bold mb-8 text-blue-600";
-                resultIcon.innerHTML = `<svg class="w-32 h-32 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.514"></path></svg>`;
+                message = "مستوى جيد. اقرأ التوضيحات جيدًا لتلافي الأخطاء.";
+                colorClass = "bg-blue-100 text-blue-800 border-blue-200";
             } else {
-                resultMessage.textContent = "تحتاج إلى مراجعة الدرس مرة أخرى، لا تستسلم!";
-                resultMessage.className = "text-2xl font-bold mb-8 text-orange-500";
-                resultIcon.innerHTML = `<svg class="w-32 h-32 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>`;
+                message = "تحتاج إلى مراجعة قاعدة هذا القسم مرة أخرى، لا بأس، التعلم يأتي بالممارسة.";
+                colorClass = "bg-orange-100 text-orange-800 border-orange-200";
             }
+
+            const completionHtml = `
+                <div class="mt-8 p-8 rounded-2xl border-2 text-center feedback-enter ${colorClass}">
+                    <h3 class="text-3xl font-readex font-bold mb-4">اكتمل القسم!</h3>
+                    <p class="text-2xl font-bold mb-4">النتيجة النهائية: ${score} من ${total}</p>
+                    <p class="text-xl mb-6">${message}</p>
+                    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="bg-slate-800 hover:bg-slate-900 text-white font-readex font-bold text-lg py-3 px-8 rounded-xl transition">
+                        العودة للأعلى لاختيار قسم آخر
+                    </button>
+                </div>
+            `;
+            
+            // إضافة رسالة النهاية في آخر حاوية القسم
+            container.insertAdjacentHTML('beforeend', completionHtml);
         }
 
-        function resetQuiz() {
-            currentQuestionIndex = 0;
-            score = 0;
-            resultScreen.classList.add('hidden');
-            startScreen.classList.remove('hidden');
-        }
+        // تهيئة التطبيق عند التحميل
+        window.onload = function() {
+            buildSections();
+        };
     </script>
 </body>
 </html>
+
+
