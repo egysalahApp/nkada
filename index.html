@@ -69,24 +69,22 @@
 
     <!-- شريط العنوان والهوية -->
     <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div class="text-center sm:text-right w-full flex flex-col sm:flex-row sm:items-center justify-between">
-                <div>
-                    <!-- رابط القناة مدمج مع العنوان -->
-                    <a href="https://www.youtube.com/egysalah" target="_blank" class="flex items-center justify-center sm:justify-start gap-2 group transition-colors inline-flex">
-                        <h1 class="text-3xl font-bold text-slate-800 group-hover:text-red-700 transition-colors">العربية السهلة</h1>
-                        <!-- أيقونة يوتيوب SVG -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#dc2626" class="group-hover:scale-110 transition-transform">
-                            <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-                        </svg>
-                    </a>
-                    <p class="text-xl text-slate-600 font-bold mt-1">محمود صلاح</p>
-                </div>
+        <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col items-center justify-center gap-4">
+            <div class="text-center flex flex-col items-center">
+                <!-- رابط القناة مدمج مع العنوان -->
+                <a href="https://www.youtube.com/egysalah" target="_blank" class="flex items-center justify-center gap-2 group transition-colors inline-flex">
+                    <h1 class="text-3xl font-bold text-slate-800 group-hover:text-red-700 transition-colors">العربية السهلة</h1>
+                    <!-- أيقونة يوتيوب SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#dc2626" class="group-hover:scale-110 transition-transform">
+                        <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                    </svg>
+                </a>
+                <p class="text-xl text-slate-600 font-bold mt-1">محمود صلاح</p>
             </div>
         </div>
 
         <!-- شريط التنقل (Tabs) -->
-        <nav class="max-w-5xl mx-auto px-4 mt-2 flex overflow-x-auto no-scrollbar border-b border-slate-200">
+        <nav class="max-w-5xl mx-auto px-4 mt-2 flex justify-center overflow-x-auto no-scrollbar border-b border-slate-200">
             <button onclick="switchTab('home')" id="tab-home" class="tab-btn px-6 py-3 font-bold text-slate-600 hover:bg-slate-50 transition-colors whitespace-nowrap tab-active">
                 الرئيسية
             </button>
@@ -443,5 +441,3 @@
     </script>
 </body>
 </html>
-
-
