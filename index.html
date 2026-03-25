@@ -100,13 +100,13 @@
                 الرئيسية
             </button>
             <button onclick="switchTab('section1')" id="tab-section1" class="tab-btn px-6 py-3 font-semibold text-slate-800 hover:bg-slate-100 transition-colors whitespace-nowrap">
-                1. الأساسيات
+                ١. الأساسيات
             </button>
             <button onclick="switchTab('section2')" id="tab-section2" class="tab-btn px-6 py-3 font-semibold text-slate-800 hover:bg-slate-100 transition-colors whitespace-nowrap">
-                2. الاقتران بـ (أن)
+                ٢. الاقتران بـ (أن)
             </button>
             <button onclick="switchTab('section3')" id="tab-section3" class="tab-btn px-6 py-3 font-semibold text-slate-800 hover:bg-slate-100 transition-colors whitespace-nowrap">
-                3. التام والناقص
+                ٣. التام والناقص
             </button>
         </nav>
     </header>
@@ -131,16 +131,16 @@
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-right mt-8">
                 <div class="bg-sky-100 p-6 rounded-xl border border-sky-300 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 class="font-bold text-2xl text-sky-950 mb-3">1. الأساسيات</h3>
+                    <h3 class="font-bold text-2xl text-sky-950 mb-3">١. الأساسيات</h3>
                     <!-- الشرح الداخلي (Regular) -->
                     <p class="text-sky-900 font-normal text-lg sm:text-xl">عمل الأفعال، التمييز بين المقاربة والرجاء والشروع.</p>
                 </div>
                 <div class="bg-emerald-100 p-6 rounded-xl border border-emerald-300 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 class="font-bold text-2xl text-emerald-950 mb-3">2. الاقتران بـ (أن)</h3>
+                    <h3 class="font-bold text-2xl text-emerald-950 mb-3">٢. الاقتران بـ (أن)</h3>
                     <p class="text-emerald-900 font-normal text-lg sm:text-xl">متى يجب، يكثر، يقل، أو يمتنع اقتران الخبر بأن.</p>
                 </div>
                 <div class="bg-fuchsia-100 p-6 rounded-xl border border-fuchsia-300 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 class="font-bold text-2xl text-fuchsia-950 mb-3">3. التام والناقص</h3>
+                    <h3 class="font-bold text-2xl text-fuchsia-950 mb-3">٣. التام والناقص</h3>
                     <p class="text-fuchsia-900 font-normal text-lg sm:text-xl">أسئلة للمتميزين للتفريق بين الفعل الناسخ والفعل التام.</p>
                 </div>
             </div>
@@ -171,6 +171,14 @@
     </footer>
 
     <script>
+        // دالة مساعدة لتحويل الأرقام الإنجليزية إلى أرقام عربية (١، ٢، ٣)
+        function toArabicNumerals(num) {
+            const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+            return String(num).replace(/[0-9]/g, function(w) {
+                return arabicNumbers[+w];
+            });
+        }
+
         // بنوك الأسئلة المقسمة مع إضافة التلميحات
         const quizData = {
             section1: {
@@ -363,26 +371,31 @@
                 const section = quizData[sectionKey];
                 const container = document.getElementById(section.id);
                 
+                // استخدام دالة تحويل الأرقام
+                const totalQuestionsArabic = toArabicNumerals(section.questions.length);
+
                 // إضافة عنوان القسم
                 let html = `
                     <div class="${section.theme.bg} rounded-2xl shadow-sm border-2 ${section.theme.border} p-6 mb-8 text-center">
                         <!-- عنوان القسم (Bold) -->
                         <h2 class="text-3xl font-bold ${section.theme.textTitle}">${section.title}</h2>
                         <div class="mt-4 flex justify-center items-center gap-4 ${section.theme.text} font-semibold text-lg">
-                            <span class="${section.theme.badgeBg} px-4 py-2 rounded-lg border ${section.theme.border}" id="${section.id}-counter">الأسئلة المجابة: 0 / ${section.questions.length}</span>
-                            <span class="${section.theme.badgeBg} px-4 py-2 rounded-lg border ${section.theme.border}" id="${section.id}-score">النقاط: 0</span>
+                            <span class="${section.theme.badgeBg} px-4 py-2 rounded-lg border ${section.theme.border}" id="${section.id}-counter">الأسئلة المجابة: ٠ / ${totalQuestionsArabic}</span>
+                            <span class="${section.theme.badgeBg} px-4 py-2 rounded-lg border ${section.theme.border}" id="${section.id}-score">النقاط: ٠</span>
                         </div>
                     </div>
                 `;
 
                 // إضافة الأسئلة
                 section.questions.forEach((q, qIndex) => {
+                    const questionNumberArabic = toArabicNumerals(qIndex + 1);
+
                     html += `
                         <div class="bg-white rounded-2xl shadow-sm border-2 ${section.theme.border} hover:shadow-md transition-shadow p-6 sm:p-8 relative" id="q-container-${sectionKey}-${qIndex}">
                             <div class="flex items-start justify-between gap-4 mb-4">
                                 <div class="flex items-start gap-4">
                                     <div class="${section.theme.iconBg} text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-2xl flex-shrink-0 mt-1 shadow-sm">
-                                        ${qIndex + 1}
+                                        ${questionNumberArabic}
                                     </div>
                                     <!-- نص السؤال (Bold) -->
                                     <h3 class="text-2xl sm:text-3xl font-bold text-slate-950 leading-relaxed">${q.q}</h3>
@@ -450,9 +463,13 @@
             userState[sectionKey].answered++;
             if(isCorrect) userState[sectionKey].score++;
 
-            // تحديث العدادات العلوية للقسم
-            document.getElementById(`${sectionKey}-counter`).textContent = `الأسئلة المجابة: ${userState[sectionKey].answered} / ${section.questions.length}`;
-            document.getElementById(`${sectionKey}-score`).textContent = `النقاط: ${userState[sectionKey].score}`;
+            // تحديث العدادات العلوية للقسم (مع تحويل الأرقام للعربية)
+            const answeredArabic = toArabicNumerals(userState[sectionKey].answered);
+            const totalArabic = toArabicNumerals(section.questions.length);
+            const scoreArabic = toArabicNumerals(userState[sectionKey].score);
+
+            document.getElementById(`${sectionKey}-counter`).textContent = `الأسئلة المجابة: ${answeredArabic} / ${totalArabic}`;
+            document.getElementById(`${sectionKey}-score`).textContent = `النقاط: ${scoreArabic}`;
 
             // تلوين الأزرار
             if (isCorrect) {
@@ -510,6 +527,10 @@
             const total = quizData[sectionKey].questions.length;
             const percentage = (score / total) * 100;
             
+            // تحويل الأرقام للعربية
+            const scoreArabic = toArabicNumerals(score);
+            const totalArabic = toArabicNumerals(total);
+
             let message = "";
             let colorClass = "";
             
@@ -527,7 +548,7 @@
             const completionHtml = `
                 <div class="mt-8 p-8 rounded-2xl border-2 text-center feedback-enter ${colorClass}">
                     <h3 class="text-4xl font-bold mb-4">اكتمل القسم!</h3>
-                    <p class="text-3xl font-bold mb-4">النتيجة النهائية: ${score} من ${total}</p>
+                    <p class="text-3xl font-bold mb-4">النتيجة النهائية: ${scoreArabic} من ${totalArabic}</p>
                     <p class="text-2xl sm:text-3xl mb-6 font-medium">${message}</p>
                     <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="bg-indigo-800 hover:bg-indigo-900 text-white font-bold text-xl sm:text-2xl py-4 px-8 rounded-xl transition shadow-md">
                         العودة للأعلى لاختيار قسم آخر
