@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تدريبات كاد وأخواتها | العربية السهلة</title>
     
-    <!-- استدعاء خط Readex Pro من جوجل بجميع الأوزان المطلوبة -->
+    <!-- استدعاء خط Readex Pro من جوجل بجميع الأوزان المطلوبة (300, 400, 500, 600, 700) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- مكتبة Tailwind CSS مع إعداد الخط الافتراضي -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -74,7 +74,7 @@
         }
     </style>
 </head>
-<!-- استخدام خلفية بتدرج باستيل خفيف ومبهج، مع خطوط غامقة واضحة -->
+<!-- استخدام خلفية بتدرج باستيل خفيف ومبهج -->
 <body class="min-h-screen flex flex-col font-sans text-xl bg-gradient-to-br from-sky-50 via-white to-fuchsia-50 text-slate-900">
 
     <!-- شريط العنوان والهوية (متحرك مع الصفحة) -->
@@ -89,8 +89,8 @@
                         <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
                     </svg>
                 </a>
-                <!-- اسم المعلم (SemiBold) -->
-                <p class="text-xl sm:text-2xl text-slate-800 font-semibold mt-1">محمود صلاح</p>
+                <!-- اسم المعلم (Medium) -->
+                <p class="text-xl sm:text-2xl text-slate-800 font-medium mt-1">محمود صلاح</p>
             </div>
         </div>
 
@@ -124,23 +124,24 @@
             </div>
             <!-- العنوان (Bold) -->
             <h2 class="text-4xl font-bold text-slate-950 mb-6">مرحبًا بك في تدريبات كاد وأخواتها</h2>
-            <!-- الوصف (Medium) -->
-            <p class="text-2xl text-slate-800 mb-8 leading-relaxed max-w-3xl mx-auto font-medium">
+            <!-- الوصف (Light مع حجم كبير ليكون مقروءاً وأنيقاً) -->
+            <p class="text-2xl sm:text-3xl text-slate-800 mb-8 leading-relaxed max-w-3xl mx-auto font-light">
                 هذا التطبيق مقسم إلى ثلاثة أقسام رئيسية لضمان فهمك الشامل للدرس. يمكنك التنقل بين الأقسام بحرية من خلال الشريط العلوي.
             </p>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-right mt-8">
                 <div class="bg-sky-100 p-6 rounded-xl border border-sky-300 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 class="font-bold text-2xl text-sky-950 mb-3">١. الأساسيات</h3>
+                    <!-- عنوان البطاقة (SemiBold) -->
+                    <h3 class="font-semibold text-2xl text-sky-950 mb-3">١. الأساسيات</h3>
                     <!-- الشرح الداخلي (Regular) -->
                     <p class="text-sky-900 font-normal text-lg sm:text-xl">عمل الأفعال، التمييز بين المقاربة والرجاء والشروع.</p>
                 </div>
                 <div class="bg-emerald-100 p-6 rounded-xl border border-emerald-300 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 class="font-bold text-2xl text-emerald-950 mb-3">٢. الاقتران بـ (أن)</h3>
+                    <h3 class="font-semibold text-2xl text-emerald-950 mb-3">٢. الاقتران بـ (أن)</h3>
                     <p class="text-emerald-900 font-normal text-lg sm:text-xl">متى يجب، يكثر، يقل، أو يمتنع اقتران الخبر بأن.</p>
                 </div>
                 <div class="bg-fuchsia-100 p-6 rounded-xl border border-fuchsia-300 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 class="font-bold text-2xl text-fuchsia-950 mb-3">٣. التام والناقص</h3>
+                    <h3 class="font-semibold text-2xl text-fuchsia-950 mb-3">٣. التام والناقص</h3>
                     <p class="text-fuchsia-900 font-normal text-lg sm:text-xl">أسئلة للمتميزين للتفريق بين الفعل الناسخ والفعل التام.</p>
                 </div>
             </div>
@@ -160,10 +161,10 @@
     <!-- تذييل الصفحة (Footer) -->
     <footer class="mt-auto py-6 bg-white/80 backdrop-blur-sm border-t border-slate-300">
         <div class="max-w-5xl mx-auto px-4 text-center">
-            <!-- النص في التذييل (Regular) -->
-            <p class="text-slate-800 font-normal text-lg">
+            <!-- النص في التذييل (Light) مع الرابط (Medium) -->
+            <p class="text-slate-800 font-light text-xl">
                 جميع الحقوق محفوظة لقناة 
-                <a href="https://www.youtube.com/egysalah" target="_blank" class="text-red-700 hover:text-red-800 transition-colors font-semibold inline-flex items-center gap-1">
+                <a href="https://www.youtube.com/egysalah" target="_blank" class="text-red-700 hover:text-red-800 transition-colors font-medium inline-flex items-center gap-1">
                     العربية السهلة
                 </a>
             </p>
@@ -218,7 +219,7 @@
                         q: "الفعل الذي يفيد (الرجاء) من بين الأفعال الآتية هو:",
                         options: ["عَسَى", "أوشك", "جعل"],
                         correct: 0,
-                        hint: "الرجاء يعني حب حصول الشيء، أي من هذه الأفعال يُستخدم في ذلك؟",
+                        hint: "الرجاء يعني تمني وحب حصول الشيء، أي من هذه الأفعال يُستخدم في الدعاء والتمني؟",
                         explanation: "أفعال الرجاء هي: عسى، حرى، اخلولق. أما أوشك فيفيد المقاربة، وجعل يفيد الشروع."
                     },
                     {
@@ -379,7 +380,7 @@
                     <div class="${section.theme.bg} rounded-2xl shadow-sm border-2 ${section.theme.border} p-6 mb-8 text-center">
                         <!-- عنوان القسم (Bold) -->
                         <h2 class="text-3xl font-bold ${section.theme.textTitle}">${section.title}</h2>
-                        <div class="mt-4 flex justify-center items-center gap-4 ${section.theme.text} font-semibold text-lg">
+                        <div class="mt-4 flex justify-center items-center gap-4 ${section.theme.text} font-medium text-lg sm:text-xl">
                             <span class="${section.theme.badgeBg} px-4 py-2 rounded-lg border ${section.theme.border}" id="${section.id}-counter">الأسئلة المجابة: ٠ / ${totalQuestionsArabic}</span>
                             <span class="${section.theme.badgeBg} px-4 py-2 rounded-lg border ${section.theme.border}" id="${section.id}-score">النقاط: ٠</span>
                         </div>
@@ -397,8 +398,8 @@
                                     <div class="${section.theme.iconBg} text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-2xl flex-shrink-0 mt-1 shadow-sm">
                                         ${questionNumberArabic}
                                     </div>
-                                    <!-- نص السؤال (Bold) -->
-                                    <h3 class="text-2xl sm:text-3xl font-bold text-slate-950 leading-relaxed">${q.q}</h3>
+                                    <!-- نص السؤال (SemiBold) -->
+                                    <h3 class="text-2xl sm:text-3xl font-semibold text-slate-950 leading-relaxed">${q.q}</h3>
                                 </div>
                             </div>
                             
@@ -412,18 +413,18 @@
                                     تلميح
                                 </button>
                                 
-                                <!-- نص التلميح (Regular للتوضيح و Bold للكلمة) -->
-                                <div id="hint-box-${sectionKey}-${qIndex}" class="hidden mt-3 bg-gradient-to-l from-amber-50 to-yellow-50 border-r-4 border-amber-500 p-4 rounded-l-xl text-amber-950 text-lg sm:text-xl font-normal shadow-sm">
-                                    <span class="font-bold">💡 تلميح: </span>${q.hint}
+                                <!-- نص التلميح (Light للتوضيح و SemiBold للكلمة) -->
+                                <div id="hint-box-${sectionKey}-${qIndex}" class="hidden mt-3 bg-gradient-to-l from-amber-50 to-yellow-50 border-r-4 border-amber-500 p-4 rounded-l-xl text-amber-950 text-xl font-light shadow-sm">
+                                    <span class="font-semibold">💡 تلميح: </span>${q.hint}
                                 </div>
                             </div>
                             
-                            <!-- الخيارات (SemiBold) -->
+                            <!-- الخيارات (Medium) -->
                             <div class="flex flex-col gap-4 pl-0 sm:pl-16 options-wrapper">
                                 ${q.options.map((opt, optIndex) => `
                                     <button 
                                         onclick="handleAnswer('${sectionKey}', ${qIndex}, ${optIndex}, this)" 
-                                        class="option-btn font-semibold w-full text-right bg-slate-50 border-2 border-slate-300 text-slate-950 text-xl sm:text-2xl py-4 px-6 rounded-xl hover:bg-slate-100 hover:border-slate-400">
+                                        class="option-btn font-medium w-full text-right bg-slate-50 border-2 border-slate-300 text-slate-950 text-xl sm:text-2xl py-4 px-6 rounded-xl hover:bg-slate-100 hover:border-slate-400">
                                         ${opt}
                                     </button>
                                 `).join('')}
