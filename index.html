@@ -10,15 +10,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- مكتبة Tailwind CSS -->
+    <!-- مكتبة Tailwind CSS مع إعداد الخط الافتراضي -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Readex Pro"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     
     <style>
-        /* الاعتماد الكلي على خط Readex Pro */
+        /* إعدادات إضافية */
         body {
-            font-family: 'Readex Pro', sans-serif;
             background-color: #f8fafc; /* لون رمادي/أزرق فاتح جدًا هادئ */
-            color: #0f172a; /* لون غامق لضمان وضوح القراءة */
         }
 
         /* تنسيقات الأزرار التفاعلية */
@@ -65,37 +74,38 @@
         }
     </style>
 </head>
-<!-- استخدام خلفية بتدرج باستيل خفيف ومبهج مع خطوط غامقة -->
-<body class="min-h-screen flex flex-col font-semibold text-lg bg-gradient-to-br from-sky-50 via-white to-fuchsia-50 text-slate-800">
+<!-- استخدام خلفية بتدرج باستيل خفيف ومبهج، مع خطوط غامقة واضحة -->
+<body class="min-h-screen flex flex-col font-sans text-xl bg-gradient-to-br from-sky-50 via-white to-fuchsia-50 text-slate-900">
 
     <!-- شريط العنوان والهوية (متحرك مع الصفحة) -->
-    <header class="bg-white/80 backdrop-blur-md shadow-sm border-b border-slate-200">
-        <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col items-center justify-center gap-4">
+    <header class="bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-300">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col items-center justify-center gap-3">
             <div class="text-center flex flex-col items-center">
-                <!-- رابط القناة مدمج مع العنوان -->
+                <!-- رابط القناة مدمج مع العنوان (Bold) -->
                 <a href="https://www.youtube.com/egysalah" target="_blank" class="flex items-center justify-center gap-2 group transition-colors inline-flex">
-                    <h1 class="text-3xl font-bold text-slate-900 group-hover:text-red-700 transition-colors">العربية السهلة</h1>
+                    <h1 class="text-3xl sm:text-4xl font-bold text-slate-950 group-hover:text-red-700 transition-colors">العربية السهلة</h1>
                     <!-- أيقونة يوتيوب SVG -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#dc2626" class="group-hover:scale-110 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="#dc2626" class="group-hover:scale-110 transition-transform">
                         <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
                     </svg>
                 </a>
-                <p class="text-xl text-slate-700 font-bold mt-1">محمود صلاح</p>
+                <!-- اسم المعلم (SemiBold) -->
+                <p class="text-xl sm:text-2xl text-slate-800 font-semibold mt-1">محمود صلاح</p>
             </div>
         </div>
 
-        <!-- شريط التنقل (Tabs) -->
+        <!-- شريط التنقل / Tabs (SemiBold) -->
         <nav class="max-w-5xl mx-auto px-4 mt-2 flex justify-center overflow-x-auto no-scrollbar border-b border-slate-200">
-            <button onclick="switchTab('home')" id="tab-home" class="tab-btn px-6 py-3 font-bold text-slate-700 hover:bg-slate-50 transition-colors whitespace-nowrap tab-active">
+            <button onclick="switchTab('home')" id="tab-home" class="tab-btn px-6 py-3 font-semibold text-slate-800 hover:bg-slate-100 transition-colors whitespace-nowrap tab-active">
                 الرئيسية
             </button>
-            <button onclick="switchTab('section1')" id="tab-section1" class="tab-btn px-6 py-3 font-bold text-slate-700 hover:bg-slate-50 transition-colors whitespace-nowrap">
+            <button onclick="switchTab('section1')" id="tab-section1" class="tab-btn px-6 py-3 font-semibold text-slate-800 hover:bg-slate-100 transition-colors whitespace-nowrap">
                 1. الأساسيات
             </button>
-            <button onclick="switchTab('section2')" id="tab-section2" class="tab-btn px-6 py-3 font-bold text-slate-700 hover:bg-slate-50 transition-colors whitespace-nowrap">
+            <button onclick="switchTab('section2')" id="tab-section2" class="tab-btn px-6 py-3 font-semibold text-slate-800 hover:bg-slate-100 transition-colors whitespace-nowrap">
                 2. الاقتران بـ (أن)
             </button>
-            <button onclick="switchTab('section3')" id="tab-section3" class="tab-btn px-6 py-3 font-bold text-slate-700 hover:bg-slate-50 transition-colors whitespace-nowrap">
+            <button onclick="switchTab('section3')" id="tab-section3" class="tab-btn px-6 py-3 font-semibold text-slate-800 hover:bg-slate-100 transition-colors whitespace-nowrap">
                 3. التام والناقص
             </button>
         </nav>
@@ -105,32 +115,37 @@
     <main class="flex-grow w-full max-w-5xl mx-auto p-4 sm:p-6 mb-8">
         
         <!-- صفحة الرئيسية -->
-        <div id="home" class="tab-content block bg-white rounded-2xl shadow-sm border border-slate-100 p-8 text-center mt-6">
+        <div id="home" class="tab-content block bg-white rounded-2xl shadow-sm border border-slate-200 p-8 text-center mt-6">
             <div class="flex justify-center mb-6">
                 <!-- أيقونة ترحيبية SVG -->
                 <svg class="w-24 h-24 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                 </svg>
             </div>
-            <h2 class="text-4xl font-bold text-slate-900 mb-6">مرحبًا بك في تدريبات كاد وأخواتها</h2>
-            <p class="text-2xl text-slate-700 mb-8 leading-relaxed max-w-3xl mx-auto font-semibold">
+            <!-- العنوان (Bold) -->
+            <h2 class="text-4xl font-bold text-slate-950 mb-6">مرحبًا بك في تدريبات كاد وأخواتها</h2>
+            <!-- الوصف (Medium) -->
+            <p class="text-2xl text-slate-800 mb-8 leading-relaxed max-w-3xl mx-auto font-medium">
                 هذا التطبيق مقسم إلى ثلاثة أقسام رئيسية لضمان فهمك الشامل للدرس. يمكنك التنقل بين الأقسام بحرية من خلال الشريط العلوي.
             </p>
+            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-right mt-8">
-                <div class="bg-sky-100 p-6 rounded-xl border border-sky-200 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 class="font-bold text-xl text-sky-900 mb-2">1. الأساسيات</h3>
-                    <p class="text-sky-800 font-semibold">عمل الأفعال، التمييز بين المقاربة والرجاء والشروع.</p>
+                <div class="bg-sky-100 p-6 rounded-xl border border-sky-300 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="font-bold text-2xl text-sky-950 mb-3">1. الأساسيات</h3>
+                    <!-- الشرح الداخلي (Regular) -->
+                    <p class="text-sky-900 font-normal text-lg sm:text-xl">عمل الأفعال، التمييز بين المقاربة والرجاء والشروع.</p>
                 </div>
-                <div class="bg-emerald-100 p-6 rounded-xl border border-emerald-200 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 class="font-bold text-xl text-emerald-900 mb-2">2. الاقتران بـ (أن)</h3>
-                    <p class="text-emerald-800 font-semibold">متى يجب، يكثر، يقل، أو يمتنع اقتران الخبر بأن.</p>
+                <div class="bg-emerald-100 p-6 rounded-xl border border-emerald-300 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="font-bold text-2xl text-emerald-950 mb-3">2. الاقتران بـ (أن)</h3>
+                    <p class="text-emerald-900 font-normal text-lg sm:text-xl">متى يجب، يكثر، يقل، أو يمتنع اقتران الخبر بأن.</p>
                 </div>
-                <div class="bg-fuchsia-100 p-6 rounded-xl border border-fuchsia-200 shadow-sm hover:shadow-md transition-shadow">
-                    <h3 class="font-bold text-xl text-fuchsia-900 mb-2">3. التام والناقص</h3>
-                    <p class="text-fuchsia-800 font-semibold">أسئلة للمتميزين للتفريق بين الفعل الناسخ والفعل التام.</p>
+                <div class="bg-fuchsia-100 p-6 rounded-xl border border-fuchsia-300 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="font-bold text-2xl text-fuchsia-950 mb-3">3. التام والناقص</h3>
+                    <p class="text-fuchsia-900 font-normal text-lg sm:text-xl">أسئلة للمتميزين للتفريق بين الفعل الناسخ والفعل التام.</p>
                 </div>
             </div>
-            <button onclick="switchTab('section1')" class="mt-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-2xl py-4 px-10 rounded-xl shadow-md transition transform hover:-translate-y-1">
+            <!-- الزر (Bold) -->
+            <button onclick="switchTab('section1')" class="mt-12 bg-indigo-700 hover:bg-indigo-800 text-white font-bold text-2xl py-4 px-10 rounded-xl shadow-md transition transform hover:-translate-y-1">
                 البدء بالقسم الأول
             </button>
         </div>
@@ -143,11 +158,12 @@
     </main>
 
     <!-- تذييل الصفحة (Footer) -->
-    <footer class="mt-auto py-6 bg-white/60 backdrop-blur-sm border-t border-slate-200">
+    <footer class="mt-auto py-6 bg-white/80 backdrop-blur-sm border-t border-slate-300">
         <div class="max-w-5xl mx-auto px-4 text-center">
-            <p class="text-slate-700 font-bold text-lg">
+            <!-- النص في التذييل (Regular) -->
+            <p class="text-slate-800 font-normal text-lg">
                 جميع الحقوق محفوظة لقناة 
-                <a href="https://www.youtube.com/egysalah" target="_blank" class="text-red-600 hover:text-red-700 transition-colors font-bold inline-flex items-center gap-1">
+                <a href="https://www.youtube.com/egysalah" target="_blank" class="text-red-700 hover:text-red-800 transition-colors font-semibold inline-flex items-center gap-1">
                     العربية السهلة
                 </a>
             </p>
@@ -162,11 +178,11 @@
                 title: 'القسم الأول: أساسيات كاد وأخواتها (المعنى والعمل)',
                 theme: {
                     bg: 'bg-sky-50',
-                    border: 'border-sky-200',
-                    textTitle: 'text-sky-900',
-                    text: 'text-sky-800',
+                    border: 'border-sky-300',
+                    textTitle: 'text-sky-950',
+                    text: 'text-sky-900',
                     badgeBg: 'bg-sky-100',
-                    iconBg: 'bg-sky-500',
+                    iconBg: 'bg-sky-600',
                 },
                 questions: [
                     {
@@ -211,11 +227,11 @@
                 title: 'القسم الثاني: حكم اقتران خبر الأفعال بـ (أنْ)',
                 theme: {
                     bg: 'bg-emerald-50',
-                    border: 'border-emerald-200',
-                    textTitle: 'text-emerald-900',
-                    text: 'text-emerald-800',
+                    border: 'border-emerald-300',
+                    textTitle: 'text-emerald-950',
+                    text: 'text-emerald-900',
                     badgeBg: 'bg-emerald-100',
-                    iconBg: 'bg-emerald-500',
+                    iconBg: 'bg-emerald-600',
                 },
                 questions: [
                     {
@@ -260,11 +276,11 @@
                 title: 'القسم الثالث: التمييز بين الفعل التام والفعل الناقص',
                 theme: {
                     bg: 'bg-fuchsia-50',
-                    border: 'border-fuchsia-200',
-                    textTitle: 'text-fuchsia-900',
-                    text: 'text-fuchsia-800',
+                    border: 'border-fuchsia-300',
+                    textTitle: 'text-fuchsia-950',
+                    text: 'text-fuchsia-900',
                     badgeBg: 'bg-fuchsia-100',
-                    iconBg: 'bg-fuchsia-500',
+                    iconBg: 'bg-fuchsia-600',
                 },
                 questions: [
                     {
@@ -349,9 +365,10 @@
                 
                 // إضافة عنوان القسم
                 let html = `
-                    <div class="${section.theme.bg} rounded-2xl shadow-sm border ${section.theme.border} p-6 mb-8 text-center">
+                    <div class="${section.theme.bg} rounded-2xl shadow-sm border-2 ${section.theme.border} p-6 mb-8 text-center">
+                        <!-- عنوان القسم (Bold) -->
                         <h2 class="text-3xl font-bold ${section.theme.textTitle}">${section.title}</h2>
-                        <div class="mt-4 flex justify-center items-center gap-4 ${section.theme.text} font-bold">
+                        <div class="mt-4 flex justify-center items-center gap-4 ${section.theme.text} font-semibold text-lg">
                             <span class="${section.theme.badgeBg} px-4 py-2 rounded-lg border ${section.theme.border}" id="${section.id}-counter">الأسئلة المجابة: 0 / ${section.questions.length}</span>
                             <span class="${section.theme.badgeBg} px-4 py-2 rounded-lg border ${section.theme.border}" id="${section.id}-score">النقاط: 0</span>
                         </div>
@@ -364,40 +381,43 @@
                         <div class="bg-white rounded-2xl shadow-sm border-2 ${section.theme.border} hover:shadow-md transition-shadow p-6 sm:p-8 relative" id="q-container-${sectionKey}-${qIndex}">
                             <div class="flex items-start justify-between gap-4 mb-4">
                                 <div class="flex items-start gap-4">
-                                    <div class="${section.theme.iconBg} text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl flex-shrink-0 mt-1 shadow-sm">
+                                    <div class="${section.theme.iconBg} text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-2xl flex-shrink-0 mt-1 shadow-sm">
                                         ${qIndex + 1}
                                     </div>
-                                    <h3 class="text-2xl font-bold text-slate-900 leading-relaxed">${q.q}</h3>
+                                    <!-- نص السؤال (Bold) -->
+                                    <h3 class="text-2xl sm:text-3xl font-bold text-slate-950 leading-relaxed">${q.q}</h3>
                                 </div>
                             </div>
                             
                             <!-- زر التلميح وصندوق التلميح -->
-                            <div class="pl-0 sm:pl-14 mb-6">
-                                <button onclick="toggleHint('${sectionKey}', ${qIndex})" class="flex items-center gap-1.5 text-sm font-bold text-amber-600 bg-amber-50 hover:bg-amber-100 border border-amber-200 px-3 py-1.5 rounded-lg transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <div class="pl-0 sm:pl-16 mb-6">
+                                <!-- زر التلميح (Medium) -->
+                                <button onclick="toggleHint('${sectionKey}', ${qIndex})" class="flex items-center gap-1.5 text-base sm:text-lg font-medium text-amber-800 bg-amber-50 hover:bg-amber-100 border-2 border-amber-300 px-4 py-2 rounded-lg transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.53.64 2.88 1.5 3.5.76.76 1.23 1.52 1.41 2.5"></path>
                                     </svg>
                                     تلميح
                                 </button>
                                 
-                                <div id="hint-box-${sectionKey}-${qIndex}" class="hidden mt-3 bg-gradient-to-l from-amber-50 to-yellow-50 border-r-4 border-amber-400 p-4 rounded-l-xl text-amber-900 text-base font-semibold shadow-sm">
+                                <!-- نص التلميح (Regular للتوضيح و Bold للكلمة) -->
+                                <div id="hint-box-${sectionKey}-${qIndex}" class="hidden mt-3 bg-gradient-to-l from-amber-50 to-yellow-50 border-r-4 border-amber-500 p-4 rounded-l-xl text-amber-950 text-lg sm:text-xl font-normal shadow-sm">
                                     <span class="font-bold">💡 تلميح: </span>${q.hint}
                                 </div>
                             </div>
                             
-                            <!-- الخيارات -->
-                            <div class="flex flex-col gap-4 pl-0 sm:pl-14 options-wrapper">
+                            <!-- الخيارات (SemiBold) -->
+                            <div class="flex flex-col gap-4 pl-0 sm:pl-16 options-wrapper">
                                 ${q.options.map((opt, optIndex) => `
                                     <button 
                                         onclick="handleAnswer('${sectionKey}', ${qIndex}, ${optIndex}, this)" 
-                                        class="option-btn font-bold w-full text-right bg-slate-50 border-2 border-slate-200 text-slate-800 text-xl py-4 px-6 rounded-xl hover:bg-slate-100">
+                                        class="option-btn font-semibold w-full text-right bg-slate-50 border-2 border-slate-300 text-slate-950 text-xl sm:text-2xl py-4 px-6 rounded-xl hover:bg-slate-100 hover:border-slate-400">
                                         ${opt}
                                     </button>
                                 `).join('')}
                             </div>
 
                             <!-- صندوق التغذية الراجعة المخفي مبدئيًا -->
-                            <div id="feedback-${sectionKey}-${qIndex}" class="hidden mt-6 pl-0 sm:pl-14">
+                            <div id="feedback-${sectionKey}-${qIndex}" class="hidden mt-6 pl-0 sm:pl-16">
                                 <!-- سيتم حقن المحتوى هنا -->
                             </div>
                         </div>
@@ -437,37 +457,37 @@
             // تلوين الأزرار
             if (isCorrect) {
                 btnElement.classList.add('correct-btn');
-                btnElement.classList.remove('bg-slate-50', 'border-slate-200');
+                btnElement.classList.remove('bg-slate-50', 'border-slate-300');
             } else {
                 btnElement.classList.add('wrong-btn');
-                btnElement.classList.remove('bg-slate-50', 'border-slate-200');
+                btnElement.classList.remove('bg-slate-50', 'border-slate-300');
                 // إظهار الإجابة الصحيحة
                 buttons[question.correct].classList.add('correct-btn');
-                buttons[question.correct].classList.remove('bg-slate-50', 'border-slate-200');
+                buttons[question.correct].classList.remove('bg-slate-50', 'border-slate-300');
             }
 
-            // إعداد صندوق التغذية الراجعة
+            // إعداد صندوق التغذية الراجعة (نص التوضيح Regular وعنوانه Bold)
             let feedbackHTML = '';
             if (isCorrect) {
                 feedbackHTML = `
-                    <div class="bg-emerald-50 border-r-4 border-emerald-500 p-5 rounded-l-xl feedback-enter">
+                    <div class="bg-emerald-50 border-r-4 border-emerald-600 p-5 rounded-l-xl feedback-enter">
                         <div class="flex items-center gap-2 mb-3 text-emerald-800">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <span class="text-2xl font-bold">إجابة صحيحة</span>
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span class="text-2xl sm:text-3xl font-bold">إجابة صحيحة</span>
                         </div>
-                        <p class="text-lg text-emerald-900 leading-relaxed font-semibold">
+                        <p class="text-xl sm:text-2xl text-emerald-950 leading-relaxed font-normal">
                             <span class="font-bold">التوضيح: </span>${question.explanation}
                         </p>
                     </div>
                 `;
             } else {
                 feedbackHTML = `
-                    <div class="bg-red-50 border-r-4 border-red-500 p-5 rounded-l-xl feedback-enter">
+                    <div class="bg-red-50 border-r-4 border-red-600 p-5 rounded-l-xl feedback-enter">
                         <div class="flex items-center gap-2 mb-3 text-red-800">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <span class="text-2xl font-bold">إجابة خاطئة</span>
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span class="text-2xl sm:text-3xl font-bold">إجابة خاطئة</span>
                         </div>
-                        <p class="text-lg text-red-900 leading-relaxed font-semibold">
+                        <p class="text-xl sm:text-2xl text-red-950 leading-relaxed font-normal">
                             <span class="font-bold">التوضيح الصحيح: </span>${question.explanation}
                         </p>
                     </div>
@@ -495,21 +515,21 @@
             
             if (percentage >= 80) {
                 message = "مستوى ممتاز! لقد أتقنت هذا القسم.";
-                colorClass = "bg-green-100 text-green-900 border-green-200";
+                colorClass = "bg-green-100 text-green-950 border-green-300";
             } else if (percentage >= 60) {
                 message = "مستوى جيد. اقرأ التوضيحات جيدًا لتلافي الأخطاء.";
-                colorClass = "bg-blue-100 text-blue-900 border-blue-200";
+                colorClass = "bg-blue-100 text-blue-950 border-blue-300";
             } else {
                 message = "تحتاج إلى مراجعة قاعدة هذا القسم مرة أخرى، لا بأس، التعلم يأتي بالممارسة.";
-                colorClass = "bg-orange-100 text-orange-900 border-orange-200";
+                colorClass = "bg-orange-100 text-orange-950 border-orange-300";
             }
 
             const completionHtml = `
                 <div class="mt-8 p-8 rounded-2xl border-2 text-center feedback-enter ${colorClass}">
-                    <h3 class="text-3xl font-bold mb-4">اكتمل القسم!</h3>
-                    <p class="text-2xl font-bold mb-4">النتيجة النهائية: ${score} من ${total}</p>
-                    <p class="text-xl mb-6 font-semibold">${message}</p>
-                    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="bg-indigo-700 hover:bg-indigo-800 text-white font-bold text-lg py-3 px-8 rounded-xl transition shadow-md">
+                    <h3 class="text-4xl font-bold mb-4">اكتمل القسم!</h3>
+                    <p class="text-3xl font-bold mb-4">النتيجة النهائية: ${score} من ${total}</p>
+                    <p class="text-2xl sm:text-3xl mb-6 font-medium">${message}</p>
+                    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="bg-indigo-800 hover:bg-indigo-900 text-white font-bold text-xl sm:text-2xl py-4 px-8 rounded-xl transition shadow-md">
                         العودة للأعلى لاختيار قسم آخر
                     </button>
                 </div>
