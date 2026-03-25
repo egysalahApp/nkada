@@ -44,9 +44,9 @@
             cursor: not-allowed;
         }
 
-        /* حركات التوضيح */
-        .feedback-enter {
-            animation: slideDown 0.4s ease-out forwards;
+        /* حركات التوضيح والتلميح */
+        .feedback-enter, .hint-enter {
+            animation: slideDown 0.3s ease-out forwards;
         }
 
         @keyframes slideDown {
@@ -153,7 +153,7 @@
     </footer>
 
     <script>
-        // بنوك الأسئلة المقسمة
+        // بنوك الأسئلة المقسمة مع إضافة التلميحات
         const quizData = {
             section1: {
                 id: 'section1',
@@ -163,30 +163,35 @@
                         q: "من شروط عمل (كاد وأخواتها) عمل (كان) أن يكون خبرها:",
                         options: ["مفردًا منصوبًا", "شبه جملة (ظرفًا أو جارًا ومجرورًا)", "جملة فعلية فعلها مضارع"],
                         correct: 2,
+                        hint: "تذكر أن هذه الأفعال تدل على وقوع (حَدَث) سواء بالاقتراب أو الرجاء أو الشروع، لذلك تحتاج إلى نوع معين من الجمل ليكون خبراً لها.",
                         explanation: "أفعال المقاربة والرجاء والشروع تعمل عمل كان (ترفع المبتدأ وتنصب الخبر) بشرط أساسي، وهو أن يكون خبرها جملة فعلية، وفعلها يكون مضارعًا دائمًا."
                     },
                     {
                         q: "الأفعال (شرع، بدأ، أخذ، طفق، جعل) تُسمى أفعال:",
                         options: ["المقاربة", "الرجاء", "الشروع"],
                         correct: 2,
+                        hint: "ماذا تفعل عندما تمسك القلم لكي تكتب؟ أنت (تبدأ) في الكتابة.",
                         explanation: "تسمى أفعال الشروع؛ لأنها تدل على البدء والشروع في تنفيذ الفعل (الخبر)."
                     },
                     {
                         q: "«كادَ العربُ ينتصرون». الموقع الإعرابي لجملة (ينتصرون):",
                         options: ["في محل رفع خبر كاد", "في محل نصب خبر كاد", "في محل نصب حال"],
                         correct: 1,
+                        hint: "الفعل (كاد) يعمل عمل الفعل (كان)، فما هي الحالة الإعرابية لخبر كان؟",
                         explanation: "كاد فعل ماضٍ ناقص، و(العربُ) اسم كاد مرفوع، والجملة الفعلية (ينتصرون) في محل نصب خبر كاد."
                     },
                     {
                         q: "الفعل الذي يفيد (الرجاء) من بين الأفعال الآتية هو:",
                         options: ["عَسَى", "أوشك", "جعل"],
                         correct: 0,
+                        hint: "الرجاء يعني تمني وحب حصول الشيء، أي من هذه الأفعال يُستخدم في الدعاء والتمني؟",
                         explanation: "أفعال الرجاء هي: عسى، حرى، اخلولق. أما أوشك فيفيد المقاربة، وجعل يفيد الشروع."
                     },
                     {
                         q: "جميع أفعال المقاربة والرجاء والشروع أفعال جامدة (تأتي في صيغة الماضي فقط) ما عدا:",
                         options: ["كاد وأوشك", "عسى وحرى", "شرع وبدأ"],
                         correct: 0,
+                        hint: "يوجد فعلان فقط في هذا الباب يمكن أن نأتي منهما بصيغة المضارع مثل: (يَكاد) و (يُوشِك).",
                         explanation: "كاد وأوشك أفعال متصرفة تصرفًا ناقصًا، أي يأتي منها الماضي والمضارع (يكاد - يوشك) ويعملان نفس العمل. أما باقي الأفعال فتلزم صيغة الماضي لتكون ناقصة."
                     }
                 ]
@@ -199,30 +204,35 @@
                         q: "حكم اقتران خبر أفعال الشروع بـ (أنْ):",
                         options: ["يجوز", "يجب", "يمتنع (لا يقترن)"],
                         correct: 2,
+                        hint: "أفعال الشروع تدل على البدء في الفعل (الآن)، وكلمة (أنْ) تدل على (المستقبل)، فهل يجتمعان؟",
                         explanation: "أفعال الشروع تدل على البدء في الفعل الآن، و(أنْ) تدل على الاستقبال، فلا يجتمعان، ولذلك يمتنع اقتران خبرها بـ أنْ."
                     },
                     {
                         q: "«عسى اللهُ أنْ يأتيَ بالنصر». حكم اقتران خبر (عسى) بـ (أنْ):",
                         options: ["يقل", "يكثر", "يجب"],
                         correct: 1,
+                        hint: "(عسى) و (أوشك) من الأفعال التي تحب حرف (أنْ) وتأتي معه غالبًا.",
                         explanation: "الفعلان (عسى) و (أوشك) يكثر اقتران خبرهما بـ أنْ، ويجوز تجردهما منها لكن بقِلَّة."
                     },
                     {
                         q: "«شرعَ المهندسون ..........». التكملة الصحيحة نحويًا هي:",
                         options: ["أن يبنوا", "يبنون", "يبنوا"],
                         correct: 1,
+                        hint: "تذكر أن أفعال الشروع يمتنع اقتران خبرها بـ (أنْ). فكيف نكتب الفعل المضارع من الأفعال الخمسة في حالة الرفع؟",
                         explanation: "الفعل (شرع) من أفعال الشروع، ويمتنع اقتران خبره بـ أنْ. لذلك نأتي بالفعل المضارع مرفوعًا بثبوت النون (يبنون)."
                     },
                     {
                         q: "«يكاد زيتها يضيء». حكم اقتران خبر (كاد) بـ أنْ في هذه الآية:",
                         options: ["يقل", "يمتنع", "يجب"],
                         correct: 0,
+                        hint: "الفعلان (كاد) و (كرب) نادراً ما يأتي معهما (أنْ).",
                         explanation: "الفعلان (كاد) و (كرب) يقل اقتران خبرهما بـ أنْ، والكثير أن يتجرد الخبر منها كما في هذه الآية الكريمة."
                     },
                     {
                         q: "أفعال المقاربة والرجاء يمكن أن يقترن خبرها بـ (أنْ).",
                         options: ["صواب", "خطأ"],
                         correct: 0,
+                        hint: "تذكر قواعد (يقل، يكثر، يجب) للاقتران، هل تنطبق هذه القواعد على أفعال المقاربة والرجاء؟",
                         explanation: "نعم، أفعال المقاربة (كاد، كرب، أوشك) وأفعال الرجاء (عسى، حرى، اخلولق) يجوز اقتران خبرها بـ أنْ باختلاف الدرجات (يقل، يكثر، يجب)، عكس أفعال الشروع التي يمتنع اقترانها دائمًا."
                     }
                 ]
@@ -235,30 +245,35 @@
                         q: "«أخذَ الطالبُ يذاكر درسَه». إعراب كلمة (الطالبُ):",
                         options: ["فاعل مرفوع", "اسم أخذ مرفوع", "مبتدأ مرفوع"],
                         correct: 1,
+                        hint: "ابحث في الجملة.. هل يوجد خبر عبارة عن (فعل مضارع)؟ إذا وجدته فإن الفعل (أخذ) يعمل عمل (كان).",
                         explanation: "هنا الفعل (أخذ) ناقص؛ لأنه بمعنى (بدأ)، وخبره جملة فعلية فعلها مضارع (يذاكر). ولذلك (الطالب) اسم أخذ مرفوع."
                     },
                     {
                         q: "«أخذَ الطالبُ الكتابَ من المعلم». إعراب كلمة (الطالبُ):",
                         options: ["اسم أخذ مرفوع", "مبتدأ مرفوع", "فاعل مرفوع"],
                         correct: 2,
+                        hint: "هل يوجد في هذه الجملة فعل مضارع ليقع خبراً؟ إذا كان الجواب (لا)، فالفعل (أخذ) هنا فعل عادي وتام.",
                         explanation: "هنا الفعل (أخذ) تام (بمعنى تناول)؛ لأنه لم يأتِ بعده خبر جملة فعلية مضارعية. ولذلك (الطالب) فاعل مرفوع، و(الكتاب) مفعول به منصوب."
                     },
                     {
                         q: "الجملة التي تشتمل على فعل (تام) هي:",
                         options: ["أنشأ المهندسون يبنون المبنى", "بدأ المعلمُ يشرح الدرس", "أنشأ المهندسون المبنى العظيم"],
                         correct: 2,
+                        hint: "الفعل التام هو الذي يكتفي بفاعله ولا يحتاج إلى خبر (جملة فعلية فعلها مضارع).",
                         explanation: "في الجملة الأخيرة «أنشأ المهندسون المبنى»، لا يوجد خبر جملة فعلية مضارعية، والفعل هنا بمعنى (بنى أو شيد)، ولذلك هو فعل تام والمهندسون (فاعل)."
                     },
                     {
                         q: "«جعلَ الخياطُ القماشَ ثوبًا». الفعل (جعل) في هذه الجملة:",
                         options: ["فعل ناقص يفيد الشروع", "فعل تام ينصب مفعولين", "فعل ناقص يفيد الرجاء"],
                         correct: 1,
+                        hint: "تأمل معنى (جعل) هنا.. هل تعني أنه (بدأ) الخياطة؟ أم تعني أنه (حَوَّلَ) القماش إلى ثوب؟ وهل هناك خبر مضارع؟",
                         explanation: "الفعل (جعل) هنا بمعنى (حوَّل)، وليس بمعنى (بدأ)، ولا يوجد خبر مضارع، لذلك هو فعل تام ينصب مفعولين (القماش مفعول به أول، ثوبًا مفعول به ثانٍ)."
                     },
                     {
                         q: "«نحنُ مجتهدون». عند إدخال الفعل (طفق) على الجملة، تصبح الصياغة الصحيحة:",
                         options: ["طفقنا نجتهد", "طفقنا مجتهدين", "طفقنا أن نجتهد"],
                         correct: 0,
+                        hint: "تذكر شيئين: (طفق) من أفعال الشروع، وخبر أفعال الشروع يجب أن يكون مضارعاً، ويمتنع اقترانه بـ (أن).",
                         explanation: "الضمير (نحن) يتحول إلى (نا) الفاعلين ليكون اسم طفق. والخبر (مجتهدون) يجب تحويله إلى فعل مضارع (نجتهد). وطفق من أفعال الشروع يمتنع اقتران خبرها بـ (أن). فالصياغة (طفقنا نجتهد)."
                     }
                 ]
@@ -288,6 +303,18 @@
             document.getElementById(`tab-${tabId}`).classList.add('tab-active');
         }
 
+        // دالة إظهار/إخفاء التلميح
+        function toggleHint(sectionKey, qIndex) {
+            const hintBox = document.getElementById(`hint-box-${sectionKey}-${qIndex}`);
+            if (hintBox.classList.contains('hidden')) {
+                hintBox.classList.remove('hidden');
+                hintBox.classList.add('hint-enter');
+            } else {
+                hintBox.classList.add('hidden');
+                hintBox.classList.remove('hint-enter');
+            }
+        }
+
         // دالة إنشاء واجهة الأسئلة لكل قسم
         function buildSections() {
             Object.keys(quizData).forEach(sectionKey => {
@@ -308,14 +335,31 @@
                 // إضافة الأسئلة
                 section.questions.forEach((q, qIndex) => {
                     html += `
-                        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8" id="q-container-${sectionKey}-${qIndex}">
-                            <div class="flex items-start gap-4 mb-6">
-                                <div class="bg-indigo-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl flex-shrink-0 mt-1">
-                                    ${qIndex + 1}
+                        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 relative" id="q-container-${sectionKey}-${qIndex}">
+                            <div class="flex items-start justify-between gap-4 mb-4">
+                                <div class="flex items-start gap-4">
+                                    <div class="bg-indigo-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl flex-shrink-0 mt-1">
+                                        ${qIndex + 1}
+                                    </div>
+                                    <h3 class="text-2xl font-bold text-slate-900 leading-relaxed">${q.q}</h3>
                                 </div>
-                                <h3 class="text-2xl font-bold text-slate-900 leading-relaxed">${q.q}</h3>
                             </div>
                             
+                            <!-- زر التلميح وصندوق التلميح -->
+                            <div class="pl-0 sm:pl-14 mb-6">
+                                <button onclick="toggleHint('${sectionKey}', ${qIndex})" class="flex items-center gap-1.5 text-sm font-bold text-amber-600 bg-amber-50 hover:bg-amber-100 border border-amber-200 px-3 py-1.5 rounded-lg transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.53.64 2.88 1.5 3.5.76.76 1.23 1.52 1.41 2.5"></path>
+                                    </svg>
+                                    تلميح
+                                </button>
+                                
+                                <div id="hint-box-${sectionKey}-${qIndex}" class="hidden mt-3 bg-gradient-to-l from-amber-50 to-yellow-50 border-r-4 border-amber-400 p-4 rounded-l-xl text-amber-900 text-base font-semibold shadow-sm">
+                                    <span class="font-bold">💡 تلميح: </span>${q.hint}
+                                </div>
+                            </div>
+                            
+                            <!-- الخيارات -->
                             <div class="flex flex-col gap-4 pl-0 sm:pl-14 options-wrapper">
                                 ${q.options.map((opt, optIndex) => `
                                     <button 
@@ -326,7 +370,7 @@
                                 `).join('')}
                             </div>
 
-                            <!-- صندوق التغذية الراجعة المخفي مبدئياً -->
+                            <!-- صندوق التغذية الراجعة المخفي مبدئيًا -->
                             <div id="feedback-${sectionKey}-${qIndex}" class="hidden mt-6 pl-0 sm:pl-14">
                                 <!-- سيتم حقن المحتوى هنا -->
                             </div>
@@ -349,6 +393,10 @@
             // تعطيل جميع الأزرار لتجنب الإجابة المتكررة
             buttons.forEach(btn => btn.classList.add('disabled-btn'));
             buttons.forEach(btn => btn.disabled = true);
+
+            // إخفاء صندوق التلميح عند الإجابة لترتيب الشاشة
+            const hintBox = document.getElementById(`hint-box-${sectionKey}-${qIndex}`);
+            if(hintBox) hintBox.classList.add('hidden');
 
             const isCorrect = (selectedOptIndex === question.correct);
             
