@@ -66,7 +66,7 @@
     </style>
 </head>
 <!-- استخدام خلفية بتدرج باستيل خفيف ومبهج مع خطوط غامقة -->
-<body class="min-h-screen flex flex-col font-semibold text-lg bg-gradient-to-br from-indigo-50 via-white to-cyan-50 text-slate-800">
+<body class="min-h-screen flex flex-col font-semibold text-lg bg-gradient-to-br from-sky-50 via-white to-fuchsia-50 text-slate-800">
 
     <!-- شريط العنوان والهوية (متحرك مع الصفحة) -->
     <header class="bg-white/80 backdrop-blur-md shadow-sm border-b border-slate-200">
@@ -117,17 +117,17 @@
                 هذا التطبيق مقسم إلى ثلاثة أقسام رئيسية لضمان فهمك الشامل للدرس. يمكنك التنقل بين الأقسام بحرية من خلال الشريط العلوي.
             </p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-right mt-8">
-                <div class="bg-blue-50/70 p-6 rounded-xl border border-blue-100">
-                    <h3 class="font-bold text-xl text-blue-900 mb-2">1. الأساسيات</h3>
-                    <p class="text-blue-800 font-semibold">عمل الأفعال، التمييز بين المقاربة والرجاء والشروع.</p>
+                <div class="bg-sky-100 p-6 rounded-xl border border-sky-200 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="font-bold text-xl text-sky-900 mb-2">1. الأساسيات</h3>
+                    <p class="text-sky-800 font-semibold">عمل الأفعال، التمييز بين المقاربة والرجاء والشروع.</p>
                 </div>
-                <div class="bg-green-50/70 p-6 rounded-xl border border-green-100">
-                    <h3 class="font-bold text-xl text-green-900 mb-2">2. الاقتران بـ (أن)</h3>
-                    <p class="text-green-800 font-semibold">متى يجب، يكثر، يقل، أو يمتنع اقتران الخبر بأن.</p>
+                <div class="bg-emerald-100 p-6 rounded-xl border border-emerald-200 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="font-bold text-xl text-emerald-900 mb-2">2. الاقتران بـ (أن)</h3>
+                    <p class="text-emerald-800 font-semibold">متى يجب، يكثر، يقل، أو يمتنع اقتران الخبر بأن.</p>
                 </div>
-                <div class="bg-purple-50/70 p-6 rounded-xl border border-purple-100">
-                    <h3 class="font-bold text-xl text-purple-900 mb-2">3. التام والناقص</h3>
-                    <p class="text-purple-800 font-semibold">أسئلة للمتميزين للتفريق بين الفعل الناسخ والفعل التام.</p>
+                <div class="bg-fuchsia-100 p-6 rounded-xl border border-fuchsia-200 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="font-bold text-xl text-fuchsia-900 mb-2">3. التام والناقص</h3>
+                    <p class="text-fuchsia-800 font-semibold">أسئلة للمتميزين للتفريق بين الفعل الناسخ والفعل التام.</p>
                 </div>
             </div>
             <button onclick="switchTab('section1')" class="mt-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-2xl py-4 px-10 rounded-xl shadow-md transition transform hover:-translate-y-1">
@@ -160,6 +160,14 @@
             section1: {
                 id: 'section1',
                 title: 'القسم الأول: أساسيات كاد وأخواتها (المعنى والعمل)',
+                theme: {
+                    bg: 'bg-sky-50',
+                    border: 'border-sky-200',
+                    textTitle: 'text-sky-900',
+                    text: 'text-sky-800',
+                    badgeBg: 'bg-sky-100',
+                    iconBg: 'bg-sky-500',
+                },
                 questions: [
                     {
                         q: "من شروط عمل (كاد وأخواتها) عمل (كان) أن يكون خبرها:",
@@ -186,7 +194,7 @@
                         q: "الفعل الذي يفيد (الرجاء) من بين الأفعال الآتية هو:",
                         options: ["عَسَى", "أوشك", "جعل"],
                         correct: 0,
-                        hint: "الرجاء يعني تمني وحب حصول الشيء، أي من هذه الأفعال يُستخدم في الدعاء والتمني؟",
+                        hint: "الرجاء يعني حب حصول الشيء، أي من هذه الأفعال يُستخدم في ذلك؟",
                         explanation: "أفعال الرجاء هي: عسى، حرى، اخلولق. أما أوشك فيفيد المقاربة، وجعل يفيد الشروع."
                     },
                     {
@@ -201,6 +209,14 @@
             section2: {
                 id: 'section2',
                 title: 'القسم الثاني: حكم اقتران خبر الأفعال بـ (أنْ)',
+                theme: {
+                    bg: 'bg-emerald-50',
+                    border: 'border-emerald-200',
+                    textTitle: 'text-emerald-900',
+                    text: 'text-emerald-800',
+                    badgeBg: 'bg-emerald-100',
+                    iconBg: 'bg-emerald-500',
+                },
                 questions: [
                     {
                         q: "حكم اقتران خبر أفعال الشروع بـ (أنْ):",
@@ -242,6 +258,14 @@
             section3: {
                 id: 'section3',
                 title: 'القسم الثالث: التمييز بين الفعل التام والفعل الناقص',
+                theme: {
+                    bg: 'bg-fuchsia-50',
+                    border: 'border-fuchsia-200',
+                    textTitle: 'text-fuchsia-900',
+                    text: 'text-fuchsia-800',
+                    badgeBg: 'bg-fuchsia-100',
+                    iconBg: 'bg-fuchsia-500',
+                },
                 questions: [
                     {
                         q: "«أخذَ الطالبُ يذاكر درسَه». إعراب كلمة (الطالبُ):",
@@ -325,11 +349,11 @@
                 
                 // إضافة عنوان القسم
                 let html = `
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 mb-8 text-center">
-                        <h2 class="text-3xl font-bold text-slate-900">${section.title}</h2>
-                        <div class="mt-4 flex justify-center items-center gap-4 text-slate-700 font-bold">
-                            <span class="bg-slate-100 px-4 py-2 rounded-lg" id="${section.id}-counter">الأسئلة المجابة: 0 / ${section.questions.length}</span>
-                            <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-lg" id="${section.id}-score">النقاط: 0</span>
+                    <div class="${section.theme.bg} rounded-2xl shadow-sm border ${section.theme.border} p-6 mb-8 text-center">
+                        <h2 class="text-3xl font-bold ${section.theme.textTitle}">${section.title}</h2>
+                        <div class="mt-4 flex justify-center items-center gap-4 ${section.theme.text} font-bold">
+                            <span class="${section.theme.badgeBg} px-4 py-2 rounded-lg border ${section.theme.border}" id="${section.id}-counter">الأسئلة المجابة: 0 / ${section.questions.length}</span>
+                            <span class="${section.theme.badgeBg} px-4 py-2 rounded-lg border ${section.theme.border}" id="${section.id}-score">النقاط: 0</span>
                         </div>
                     </div>
                 `;
@@ -337,10 +361,10 @@
                 // إضافة الأسئلة
                 section.questions.forEach((q, qIndex) => {
                     html += `
-                        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 sm:p-8 relative" id="q-container-${sectionKey}-${qIndex}">
+                        <div class="bg-white rounded-2xl shadow-sm border-2 ${section.theme.border} hover:shadow-md transition-shadow p-6 sm:p-8 relative" id="q-container-${sectionKey}-${qIndex}">
                             <div class="flex items-start justify-between gap-4 mb-4">
                                 <div class="flex items-start gap-4">
-                                    <div class="bg-indigo-600 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl flex-shrink-0 mt-1">
+                                    <div class="${section.theme.iconBg} text-white rounded-full w-10 h-10 flex items-center justify-center font-bold text-xl flex-shrink-0 mt-1 shadow-sm">
                                         ${qIndex + 1}
                                     </div>
                                     <h3 class="text-2xl font-bold text-slate-900 leading-relaxed">${q.q}</h3>
